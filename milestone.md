@@ -7,11 +7,11 @@ header-img: "img/zhihu.jpg"
 
 
 <center>
-    <p><img src="http://7xlfkx.com1.z0.glb.clouddn.com/white2.jpg" align="center"></p>
+    <p><img src="https://raw.githubusercontent.com/zlchanger/PictureForMarkDown/master/picture/headPicture.jpg" align="center"></p>
 </center>
 
 
-###代表作：
+###所看书籍：
 
 
 - [《世界并非如你所见——用可供性来发现更大的世界》](http://www.jianshu.com/p/6f1404e0240d)
