@@ -15,7 +15,7 @@ header-img: "img/green.jpg"
 我是常照亮，坚持着梦想。
 
 
-###关注：
+### 关注：
 
 
 - Java EE
@@ -24,7 +24,7 @@ header-img: "img/green.jpg"
 - [stackoverflow](https://stackoverflow.com/)
 - [孤傲苍狼](http://www.cnblogs.com/xdp-gacl/)
 
-###联系
+### 联系
 
 - [微博@zlchanger](http://weibo.com/u/3894554279)
 
