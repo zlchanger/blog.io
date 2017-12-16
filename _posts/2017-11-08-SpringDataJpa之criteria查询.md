@@ -26,22 +26,24 @@ Criteria 查询是以元模型的概念为基础的，元模型是为具体持�
 * CriteriaBuilder接口：用来构建CritiaQuery的构建器对象
 * Predicate：一个简单或复杂的谓词类型，其实就相当于条件或者是条件组合。
 
- 1：Root实例是类型化的，且定义了查询的FROM子句中能够出现的类型。
- 2：查询根实例能通过传入一个实体类型给 AbstractQuery.from方法获得。
- 3：Criteria查询，可以有多个查询根。 
- 4：AbstractQuery是CriteriaQuery 接口的父类，它提供得到查询根的方法。
+ 1.Root实例是类型化的，且定义了查询的FROM子句中能够出现的类型。
+ 2.查询根实例能通过传入一个实体类型给 AbstractQuery.from方法获得。
+ 3.Criteria查询，可以有多个查询根。 
+ 4.AbstractQuery是CriteriaQuery 接口的父类，它提供得到查询根的方法。
  
  ### Criteria查询
  
- 基本对象的构建
- 1：通过EntityManager的getCriteriaBuilder或EntityManagerFactory的getCriteriaBuilder方法可以得到CriteriaBuilder对象
- 2：通过调用CriteriaBuilder的createQuery或createTupleQuery方法可以获得CriteriaQuery的实例
- 3：通过调用CriteriaQuery的from方法可以获得Root实例
- 过滤条件
- 1：过滤条件会被应用到SQL语句的FROM子句中。在criteria 查询中，查询条件通过Predicate或Expression实例应用到CriteriaQuery对象上。
- 2：这些条件使用 CriteriaQuery .where 方法应用到CriteriaQuery 对象上
- 3：CriteriaBuilder也作为Predicate实例的工厂，通过调用CriteriaBuilder 的条件方法（ equal，notEqual， gt， ge，lt， le，between，like等）创建Predicate对象。
- 4：复合的Predicate 语句可以使用CriteriaBuilder的and, or andnot 方法构建。
+> 基本对象的构建
+
+ 1.通过EntityManager的getCriteriaBuilder或EntityManagerFactory的getCriteriaBuilder方法可以得到CriteriaBuilder对象
+ 2.通过调用CriteriaBuilder的createQuery或createTupleQuery方法可以获得CriteriaQuery的实例
+ 3.通过调用CriteriaQuery的from方法可以获得Root实例
+> 过滤条件
+
+ 1.过滤条件会被应用到SQL语句的FROM子句中。在criteria 查询中，查询条件通过Predicate或Expression实例应用到CriteriaQuery对象上。
+ 2.这些条件使用 CriteriaQuery .where 方法应用到CriteriaQuery 对象上
+ 3.CriteriaBuilder也作为Predicate实例的工厂，通过调用CriteriaBuilder 的条件方法（ equal，notEqual， gt， ge，lt， le，between，like等）创建Predicate对象。
+ 4.复合的Predicate 语句可以使用CriteriaBuilder的and, or andnot 方法构建。
  
  构建简单的Predicate示例：
  
@@ -90,9 +92,11 @@ Criteria 查询是以元模型的概念为基础的，元模型是为具体持�
      };   
 
 ### 多表查询
-多表连接查询稍微麻烦一些，下面演示一下常见的1:M，顺带演示一下1:1
-使用Criteria查询实现1对多的查询
-1：首先要添加一个实体对象DepModel，并设置好UserModel和它的1对多关系，如下：
+> 多表连接查询稍微麻烦一些，下面演示一下常见的1:M，顺带演示一下1:1
+
+> 使用Criteria查询实现1对多的查询
+
+1.首先要添加一个实体对象DepModel，并设置好UserModel和它的1对多关系，如下：
 
     @Entity
     @Table(name="tbl_user")
@@ -119,7 +123,7 @@ Criteria 查询是以元模型的概念为基础的，元模型是为具体持�
     //省略getter/setter
     }
 
-2：配置好Model及其关系后，就可以在构建Specification的时候使用了，示例如下：
+2.配置好Model及其关系后，就可以在构建Specification的时候使用了，示例如下：
 
     Specification<UserModel> spec = new Specification<UserModel>() {
     public Predicate toPredicate(Root<UserModel> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
@@ -137,17 +141,17 @@ Criteria 查询是以元模型的概念为基础的，元模型是为具体持�
     }};
 
 接下来看看使用Criteria查询实现1:1的查询
-1：在UserModel中去掉setDep的属性及其配置，然后添加如下的属性和配置：
+1.在UserModel中去掉setDep的属性及其配置，然后添加如下的属性和配置：
 
     @OneToOne()
     @JoinColumn(name = "depUuid")
     private DepModel dep;
     public DepModel getDep() { return dep;}
     public void setDep(DepModel dep) {this.dep = dep;  }
-2：在DepModel中um属性上的注解配置去掉，换成如下的配置：
+2.在DepModel中um属性上的注解配置去掉，换成如下的配置：
 
     @OneToOne(mappedBy = "dep", fetch = FetchType. EAGER, cascade = {CascadeType. ALL})
-3：在Specification实现中，把SetJoin的那句换成如下的语句：
+3.在Specification实现中，把SetJoin的那句换成如下的语句：
 
     Join<UserModel,DepModel> depJoin =
     root.join(root.getModel().getSingularAttribute("dep",DepModel.class),JoinType.LEFT);
