@@ -7,7 +7,7 @@ tags: [Specifications查询]
 description: 数据查询必备。
 
 ---
-## Spring Data JPA
+##  Spring Data JPA
 Spring-Data-JPA支持JPA2.0的Criteria查询，相应的接口是JpaSpecificationExecutor。
 Criteria 查询：是一种类型安全和更面向对象的查询
  
@@ -17,7 +17,7 @@ Criteria 查询：是一种类型安全和更面向对象的查询
  
 要理解这个方法，以及正确的使用它，就需要对JPA2.0的Criteria查询有一个足够的熟悉和理解，因为这个方法的参数和返回值都是JPA标准里面定义的对象。
  
-### Criteria查询基本概念
+###  Criteria查询基本概念
 
 Criteria 查询是以元模型的概念为基础的，元模型是为具体持久化单元的受管实体定义的，这些实体可以是实体类，嵌入类或者映射的父类。
 * CriteriaQuery接口：代表一个specific的顶层查询对象，它包含着查询的各个部分，比如：select 、from、where、group by、order by等
@@ -31,7 +31,7 @@ Criteria 查询是以元模型的概念为基础的，元模型是为具体持�
  3：Criteria查询，可以有多个查询根。 
  4：AbstractQuery是CriteriaQuery 接口的父类，它提供得到查询根的方法。
  
- ### Criteria查询
+ ###  Criteria查询
  
  基本对象的构建
  1：通过EntityManager的getCriteriaBuilder或EntityManagerFactory的getCriteriaBuilder方法可以得到CriteriaBuilder对象
