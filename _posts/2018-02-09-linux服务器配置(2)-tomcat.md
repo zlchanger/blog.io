@@ -1,6 +1,6 @@
 ---
 layout: post
-title: linux服务器配置（1）————tomcat
+title: linux服务器配置（2）————tomcat
 date: 2018/02/09
 categories: blog
 tags: [linux配置]
